@@ -13,13 +13,14 @@ php -S localhost:8000 -t public
 ## Endpoint
 
 - `GET /api/productos`
+- `GET /api/proveedores`
 
 Todos devuelven una estructura JSON tipo:
 
 ```json
 {
   "ok": true,
-  "endpoint": "productos",
+  "endpoint": "productos | proveedores",
   "count": 2,
   "data": []
 }
