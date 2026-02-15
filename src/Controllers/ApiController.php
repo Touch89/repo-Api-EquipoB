@@ -18,6 +18,11 @@ final class ApiController
         return $this->buildSuccessResponse('productos', 'products.json');
     }
 
+    public function getStockProductos(): array
+    {
+        return $this->buildSuccessResponse('stock-productos', 'stock.json');
+    }
+
     private function buildSuccessResponse(string $endpoint, string $fileName): array
     {
         try {
