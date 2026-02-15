@@ -16,3 +16,6 @@ $router->get('/', fn() => [
 ]);
 
 $router->get('/api/productos', fn() => $controller->getProductos());
+$router->get('/api/categorias', fn() => $controller->getCategorias());
+
+
