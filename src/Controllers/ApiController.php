@@ -18,6 +18,16 @@ final class ApiController
         return $this->buildSuccessResponse('productos', 'products.json');
     }
 
+    public function getOrdenes(): array
+    {
+        return $this->buildSuccessResponse('ordenes', 'orders.json');
+    }
+
+    public function getCategorias2(): array
+    {
+        return $this->buildSuccessResponse('categorias', 'categories.json');
+    }
+
     // ✅ NUEVO: endpoint categorías (mismo formato que productos)
     public function getCategorias(): array
     {
