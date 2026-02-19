@@ -17,3 +17,4 @@ $router->get('/', fn() => [
 
 $router->get('/api/productos', fn() => $controller->getProductos());
 $router->get('/api/stock-productos', fn() => $controller->getStockProductos());
+$router->get('/api/proveedores', fn() => $controller->getProveedores());

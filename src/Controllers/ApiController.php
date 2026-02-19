@@ -25,6 +25,11 @@ final class ApiController
         return $this->buildSuccessResponse('stock-productos', 'stock.json');
     }
 
+    public function getProveedores(): array
+    {
+        return $this->buildSuccessResponse('proveedores', 'providers.json');
+    }
+
     private function buildSuccessResponse(string $endpoint, string $fileName): array
     {
         try {
