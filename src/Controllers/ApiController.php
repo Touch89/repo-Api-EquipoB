@@ -18,7 +18,9 @@ final class ApiController
         return $this->buildSuccessResponse('productos', 'products.json');
     }
 
-    public function getStockProductos(): array
+    #comentario
+
+    public function getOrdenes(): array
     {
         return $this->buildSuccessResponse('stock-productos', 'stock.json');
     }
