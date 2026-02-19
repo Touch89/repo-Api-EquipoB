@@ -17,3 +17,8 @@ $router->get('/', fn() => [
 
 $router->get('/api/productos', fn() => $controller->getProductos());
 $router->get('/api/stock-productos', fn() => $controller->getStockProductos());
+$router->get('/api/categorias', fn() => $controller->getCategorias());
+$router->get('/api/categorias2', fn() => $controller->getCategorias2());
+$router->get('/api/ordenes', fn() => $controller->getOrdenes());
+
+

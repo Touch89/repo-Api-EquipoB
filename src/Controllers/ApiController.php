@@ -22,6 +22,39 @@ final class ApiController
     {
         return $this->buildSuccessResponse('stock-productos', 'stock.json');
     }
+        
+    public function getOrdenes(): array
+    {
+        return $this->buildSuccessResponse('ordenes', 'orders.json');
+    }
+
+    public function getCategorias2(): array
+    {
+        return $this->buildSuccessResponse('categorias', 'categories.json');
+    }
+
+    // ✅ NUEVO: endpoint categorías (mismo formato que productos)
+    public function getCategorias(): array
+    {
+        // Opción A (recomendada): si vas a usar archivo JSON como productos
+        // return $this->buildSuccessResponse('categorias', 'categories.json');
+
+        // Opción B: mock directo (como lo estabas haciendo)
+        $data = [
+            ['id' => 1, 'nombre' => 'Electrónica'],
+            ['id' => 2, 'nombre' => 'Ropa'],
+        ];
+
+        return [
+            'status' => 200,
+            'body' => [
+                'ok' => true,
+                'endpoint' => 'categorias',
+                'count' => count($data),
+                'data' => $data,
+            ],
+        ];
+    }
 
     private function buildSuccessResponse(string $endpoint, string $fileName): array
     {
