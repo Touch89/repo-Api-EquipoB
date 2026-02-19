@@ -18,6 +18,34 @@ final class ApiController
         return $this->buildSuccessResponse('productos', 'products.json');
     }
 
+    public function getOrdenes(): array
+    {
+        return $this->buildSuccessResponse('ordenes', 'orders.json');
+    }
+
+    public function getCategorias2(): array
+    {
+        return $this->buildSuccessResponse('categorias', 'categories.json');
+    }
+
+    public function getCategorias(): array
+    {
+        $data = [
+            ['id' => 1, 'nombre' => 'Electrónica'],
+            ['id' => 2, 'nombre' => 'Ropa'],
+        ];
+
+        return [
+            'status' => 200,
+            'body' => [
+                'ok' => true,
+                'endpoint' => 'categorias',
+                'count' => count($data),
+                'data' => $data,
+            ],
+        ];
+    }
+
     private function buildSuccessResponse(string $endpoint, string $fileName): array
     {
         try {
