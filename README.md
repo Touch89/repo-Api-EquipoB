@@ -14,6 +14,8 @@ php -S localhost:8000 -t public
 
 - `GET /api/productos`
 - `GET /api/stock-productos`
+- `GET /api/proveedores`
+
 
 Todos devuelven una estructura JSON tipo:
 
