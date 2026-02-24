@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Services\DataService;
+use App\Services\PrestashopService;
+use App\Services\OdooService;
 use RuntimeException;
 
 final class ApiController
@@ -54,6 +56,68 @@ final class ApiController
     public function getProveedores(): array
     {
         return $this->buildSuccessResponse('proveedores', 'providers.json');
+    }
+
+    public function getPrestashopPagos(): array
+    {
+        try {
+            $service = new PrestashopService();
+            $pagos = $service->getPagos();
+
+            return [
+                'status' => 200,
+                'body' => [
+                    'status' => 'success',
+                    'data' => $pagos,
+                    'errors' => [],
+                ],
+            ];
+        } catch (\Throwable $e) {
+            return [
+                'status' => 400,
+                'body' => [
+                    'status' => 'error',
+                    'data' => null,
+                    'errors' => [
+                        [
+                            'code' => '400',
+                            'message' => $e->getMessage(),
+                        ],
+                    ],
+                ],
+            ];
+        }
+    }
+
+    public function getOdooPagos(): array
+    {
+        try {
+            $service = new OdooService();
+            $pagos = $service->getPagos();
+
+            return [
+                'status' => 200,
+                'body' => [
+                    'status' => 'success',
+                    'data' => $pagos,
+                    'errors' => [],
+                ],
+            ];
+        } catch (\Throwable $e) {
+            return [
+                'status' => 400,
+                'body' => [
+                    'status' => 'error',
+                    'data' => null,
+                    'errors' => [
+                        [
+                            'code' => '400',
+                            'message' => $e->getMessage(),
+                        ],
+                    ],
+                ],
+            ];
+        }
     }
 
     private function buildSuccessResponse(string $endpoint, string $fileName): array
