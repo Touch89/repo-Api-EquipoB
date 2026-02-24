@@ -21,11 +21,5 @@ $router->get('/api/categorias2', fn() => $controller->getCategorias2());
 $router->get('/api/ordenes', fn() => $controller->getOrdenes());
 $router->get('/api/stock-productos', fn() => $controller->getStockProductos());
 $router->get('/api/proveedores', fn() => $controller->getProveedores());
-$router->get(
-    '/api/prestashop/pagos',
-    fn() => $controller->getPrestashopPagos()
-);
-$router->get(
-    '/api/odoo/pagos',
-    fn() => $controller->getOdooPagos()
-);
+$router->get('/api/prestashop/pagos', fn() => $controller->getPrestashopPagos());
+$router->get('/api/odoo/pagos', fn() => $controller->getOdooPagos());

@@ -60,6 +60,16 @@ final class ApiController
 
     public function getPrestashopPagos(): array
     {
+        return $this->buildSuccessResponse('pagos', 'pagos.json');
+    }
+
+    public function getOdooPagos(): array
+    {
+        return $this->buildSuccessResponse('pagos', 'pagos.json');
+    }
+
+    /*public function getPrestashopPagos(): array
+    {
         try {
             $service = new PrestashopService();
             $pagos = $service->getPagos();
@@ -118,7 +128,7 @@ final class ApiController
                 ],
             ];
         }
-    }
+    }*/
 
     private function buildSuccessResponse(string $endpoint, string $fileName): array
     {
