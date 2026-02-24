@@ -89,6 +89,16 @@ final class ApiController
         }
     }
 
+    public function getPrestashopClientes(): array
+    {
+        return $this->buildPrestashopResponse('prestashop_clients.json');
+    }
+
+    public function getPrestashopProveedores(): array
+    {
+        return $this->buildPrestashopResponse('prestashop_providers.json');
+    }
+
     public function getOdooPagos(): array
     {
         try {
@@ -140,6 +150,36 @@ final class ApiController
                 'body' => [
                     'ok' => false,
                     'message' => $exception->getMessage(),
+                ],
+            ];
+        }
+    }
+
+    private function buildPrestashopResponse(string $fileName): array
+    {
+        try {
+            $data = $this->dataService->getCollection($fileName);
+
+            return [
+                'status' => 200,
+                'body' => [
+                    'status' => 'success',
+                    'data' => $data,
+                    'errors' => [],
+                ],
+            ];
+        } catch (RuntimeException $exception) {
+            return [
+                'status' => 400,
+                'body' => [
+                    'status' => 'error',
+                    'data' => null,
+                    'errors' => [
+                        [
+                            'code' => '400',
+                            'message' => $exception->getMessage(),
+                        ],
+                    ],
                 ],
             ];
         }

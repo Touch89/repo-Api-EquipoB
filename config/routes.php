@@ -26,6 +26,14 @@ $router->get(
     fn() => $controller->getPrestashopPagos()
 );
 $router->get(
+	'/api/prestashop/clientes',
+	fn() => $controller->getPrestashopClientes()
+);
+$router->get(
+	'/api/prestashop/proveedores',
+	fn() => $controller->getPrestashopProveedores()
+);
+$router->get(
     '/api/odoo/pagos',
     fn() => $controller->getOdooPagos()
 );
