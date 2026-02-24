@@ -89,6 +89,16 @@ final class ApiController
         }
     }
 
+    public function getPrestashopProductos(): array
+    {
+        return $this->buildPrestashopResponse('prestashop_products.json');
+    }
+
+    public function getPrestashopOrdenes(): array
+    {
+        return $this->buildPrestashopResponse('prestashop_orders.json');
+    }
+
     public function getPrestashopClientes(): array
     {
         return $this->buildPrestashopResponse('prestashop_clients.json');

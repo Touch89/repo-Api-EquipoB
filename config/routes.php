@@ -37,3 +37,11 @@ $router->get(
     '/api/odoo/pagos',
     fn() => $controller->getOdooPagos()
 );
+$router->get(
+		'/api/prestashop/ordenes',
+		fn() => $controller->getPrestashopOrdenes()
+);
+$router->get(
+		'/api/prestashop/productos',
+		fn() => $controller->getPrestashopProductos()
+);

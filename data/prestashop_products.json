@@ -1,0 +1,15 @@
+[{
+    "id": 1,
+    "name": "Producto Prueba 1",
+    "default_code": "PRD-001",
+    "list_price": 101.0,
+    "standard_price": 61.0
+  },
+  {
+    "id": 2,
+    "name": "Producto Prueba 2",
+    "default_code": "PRD-002",
+    "list_price": 102.0,
+    "standard_price": 62.0
+  }
+]
