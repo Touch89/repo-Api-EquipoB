@@ -60,33 +60,12 @@ final class ApiController
 
     public function getPrestashopPagos(): array
     {
-        try {
-            $service = new PrestashopService();
-            $pagos = $service->getPagos();
+        return $this->buildSuccessResponse('pagos', 'pagos.json');
+    }
 
-            return [
-                'status' => 200,
-                'body' => [
-                    'status' => 'success',
-                    'data' => $pagos,
-                    'errors' => [],
-                ],
-            ];
-        } catch (\Throwable $e) {
-            return [
-                'status' => 400,
-                'body' => [
-                    'status' => 'error',
-                    'data' => null,
-                    'errors' => [
-                        [
-                            'code' => '400',
-                            'message' => $e->getMessage(),
-                        ],
-                    ],
-                ],
-            ];
-        }
+    public function getOdooPagos(): array
+    {
+        return $this->buildSuccessResponse('pagos', 'pagos.json');
     }
 
     public function getPrestashopProductos(): array
@@ -107,37 +86,6 @@ final class ApiController
     public function getPrestashopProveedores(): array
     {
         return $this->buildPrestashopResponse('prestashop_providers.json');
-    }
-
-    public function getOdooPagos(): array
-    {
-        try {
-            $service = new OdooService();
-            $pagos = $service->getPagos();
-
-            return [
-                'status' => 200,
-                'body' => [
-                    'status' => 'success',
-                    'data' => $pagos,
-                    'errors' => [],
-                ],
-            ];
-        } catch (\Throwable $e) {
-            return [
-                'status' => 400,
-                'body' => [
-                    'status' => 'error',
-                    'data' => null,
-                    'errors' => [
-                        [
-                            'code' => '400',
-                            'message' => $e->getMessage(),
-                        ],
-                    ],
-                ],
-            ];
-        }
     }
 
     private function buildSuccessResponse(string $endpoint, string $fileName): array
