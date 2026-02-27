@@ -1,0 +1,281 @@
+{
+  "timestamp": "2026-02-27T20:14:41.806518+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/orders",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 24,
+          "name": "S00024",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:53",
+          "amount_total": 2308.4,
+          "state": "sale"
+        },
+        {
+          "id": 23,
+          "name": "S00023",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:53",
+          "amount_total": 5046.0,
+          "state": "sale"
+        },
+        {
+          "id": 22,
+          "name": "S00022",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:53",
+          "amount_total": 1711.0,
+          "state": "sale"
+        },
+        {
+          "id": 21,
+          "name": "S00021",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:53",
+          "amount_total": 2523.0,
+          "state": "sale"
+        },
+        {
+          "id": 16,
+          "name": "S00016",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 1186.5,
+          "state": "sale"
+        },
+        {
+          "id": 14,
+          "name": "S00014",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 1582.0,
+          "state": "sale"
+        },
+        {
+          "id": 13,
+          "name": "S00013",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 415.5,
+          "state": "sale"
+        },
+        {
+          "id": 12,
+          "name": "S00012",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 556.0,
+          "state": "sale"
+        },
+        {
+          "id": 10,
+          "name": "S00010",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 751.0,
+          "state": "sale"
+        },
+        {
+          "id": 8,
+          "name": "S00008",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 462.0,
+          "state": "sale"
+        },
+        {
+          "id": 7,
+          "name": "S00007",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 1706.0,
+          "state": "sale"
+        },
+        {
+          "id": 6,
+          "name": "S00006",
+          "partner_id": [
+            15,
+            "Lumber Inc"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 750.0,
+          "state": "sale"
+        },
+        {
+          "id": 4,
+          "name": "S00004",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-27 08:55:21",
+          "amount_total": 2240.0,
+          "state": "sale"
+        },
+        {
+          "id": 3,
+          "name": "S00003",
+          "partner_id": [
+            12,
+            "Ready Mat"
+          ],
+          "date_order": "2026-02-27 08:55:20",
+          "amount_total": 377.5,
+          "state": "draft"
+        },
+        {
+          "id": 9,
+          "name": "S00009",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-20 08:55:21",
+          "amount_total": 654.0,
+          "state": "sale"
+        },
+        {
+          "id": 15,
+          "name": "S00015",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-13 08:55:21",
+          "amount_total": 1541.5,
+          "state": "sale"
+        },
+        {
+          "id": 11,
+          "name": "S00011",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-02-06 08:55:21",
+          "amount_total": 1096.5,
+          "state": "sale"
+        },
+        {
+          "id": 17,
+          "name": "S00017",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-01-30 08:55:21",
+          "amount_total": 951.0,
+          "state": "sale"
+        },
+        {
+          "id": 20,
+          "name": "S00020",
+          "partner_id": [
+            8,
+            "YourCompany, Joel Willis"
+          ],
+          "date_order": "2026-01-27 08:55:21",
+          "amount_total": 2947.5,
+          "state": "sale"
+        },
+        {
+          "id": 19,
+          "name": "S00019",
+          "partner_id": [
+            8,
+            "YourCompany, Joel Willis"
+          ],
+          "date_order": "2026-01-27 08:55:00",
+          "amount_total": 1740.0,
+          "state": "sent"
+        },
+        {
+          "id": 5,
+          "name": "S00005",
+          "partner_id": [
+            10,
+            "Deco Addict"
+          ],
+          "date_order": "2026-01-27 08:55:00",
+          "amount_total": 405.0,
+          "state": "draft"
+        },
+        {
+          "id": 2,
+          "name": "S00002",
+          "partner_id": [
+            12,
+            "Ready Mat"
+          ],
+          "date_order": "2026-01-27 08:55:00",
+          "amount_total": 2947.5,
+          "state": "draft"
+        },
+        {
+          "id": 1,
+          "name": "S00001",
+          "partner_id": [
+            10,
+            "Deco Addict"
+          ],
+          "date_order": "2026-01-27 08:55:00",
+          "amount_total": 1740.0,
+          "state": "draft"
+        },
+        {
+          "id": 18,
+          "name": "S00018",
+          "partner_id": [
+            11,
+            "Gemini Furniture"
+          ],
+          "date_order": "2026-01-23 08:55:21",
+          "amount_total": 831.0,
+          "state": "sale"
+        }
+      ]
+    }
+  }
+}

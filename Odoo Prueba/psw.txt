@@ -1,0 +1,9 @@
+master psw: r5nh-7pny-97ti
+
+usuario: usuario_api
+psw: 1234
+
+llaveapi: 9753b595cc85dea7505e305fad021b2a06b96e2e
+
+Correr contenedor y levantar api al mismo tiempo:
+docker-compose up -d --build api
