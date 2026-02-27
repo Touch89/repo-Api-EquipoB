@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:15
+    container_name: odoo-pruebas
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    restart: always
+
+  odoo:
+    image: odoo:17
+    container_name: odoo-app-pruebas
+    depends_on:
+      - db
+    ports:
+      - "8070:8069"
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./addons:/mnt/extra-addons
+    restart: always
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: odoo-api-pruebas
+    depends_on:
+      - odoo
+    environment:
+      ODOO_URL: http://odoo:8069
+      ODOO_DB: pruebas-db
+      ODOO_USERNAME: usuario_api
+      ODOO_PASSWORD: "9753b595cc85dea7505e305fad021b2a06b96e2e"
+      JSON_OUTPUT_DIR: /app/generated_json
+    ports:
+      - "8091:8000"
+    volumes:
+      - ./generated_json:/app/generated_json
+    restart: always
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+ 

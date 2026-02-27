@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-02-27T20:12:23.559286+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/products/categories",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 1,
+          "name": "All",
+          "parent_id": false
+        },
+        {
+          "id": 9,
+          "name": "Consumable",
+          "parent_id": [
+            1,
+            "All"
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Expenses",
+          "parent_id": [
+            1,
+            "All"
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Internal",
+          "parent_id": [
+            1,
+            "All"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Saleable",
+          "parent_id": [
+            1,
+            "All"
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Office Furniture",
+          "parent_id": [
+            2,
+            "All / Saleable"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Services",
+          "parent_id": [
+            2,
+            "All / Saleable"
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Saleable",
+          "parent_id": [
+            5,
+            "All / Saleable / Services"
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Software",
+          "parent_id": [
+            2,
+            "All / Saleable"
+          ]
+        }
+      ]
+    }
+  }
+}
