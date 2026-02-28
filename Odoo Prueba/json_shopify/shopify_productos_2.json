@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-02-28T02:29:04.812831+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/shopify/products",
+    "query": {
+      "limit": "20"
+    },
+    "body": null
+  },
+  "response": {
+    "status_code": 502,
+    "body": {
+      "detail": "Error Shopify 404 en /products.json: {\"errors\":\"Not Found\"}"
+    }
+  }
+}

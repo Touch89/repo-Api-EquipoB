@@ -18,10 +18,17 @@ Si también quieres levantar Odoo + DB + API:
 docker compose up -d --build
 ```
 
+Si también quieres levantar PrestaShop + MariaDB:
+
+```powershell
+docker compose up -d --build prestashop prestashop-db
+```
+
 Base URL local:
 
 - `http://127.0.0.1:8090`
 - `http://127.0.0.1:8091` (Docker Compose)
+- `http://127.0.0.1:8081` (PrestaShop en Docker Compose)
 
 ## Variables de conexión a Odoo
 
@@ -30,6 +37,13 @@ Base URL local:
 - `ODOO_USERNAME` (default: `usuario_api`)
 - `ODOO_PASSWORD` (default: `1234`)
 - `JSON_OUTPUT_DIR` (default: `generated_json`)
+
+## Variables de conexión a Shopify
+
+- `SHOPIFY_STORE_URL` (ejemplo: `https://tu-tienda.myshopify.com`)
+- `SHOPIFY_ACCESS_TOKEN` (Admin API access token)
+- `SHOPIFY_API_VERSION` (default: `2024-10`)
+- `JSON_SHOPIFY_OUTPUT_DIR` (default: `json_shopify`)
 
 En PowerShell:
 
@@ -52,6 +66,8 @@ Cada consulta a endpoint genera automáticamente un archivo `.json` con:
 
 Por defecto se guardan en la carpeta `generated_json/`.
 
+Las consultas a endpoints de Shopify se guardan en `json_shopify/`.
+
 La nomenclatura es por endpoint y número incremental, por ejemplo:
 
 - `ordenes_1.json`, `ordenes_2.json`
@@ -70,6 +86,13 @@ Si ejecutas con Docker Compose, la carpeta `generated_json/` del proyecto queda 
 - `GET /api/products/categories`
 - `POST /api/products`
 - `POST /api/products/bulk`
+- `GET /api/shopify/products`
+- `GET /api/shopify/orders`
+- `GET /api/shopify/customers`
+- `GET /api/shopify/suppliers`
+- `GET /api/shopify/payments`
+- `GET /api/shopify/products/by-sku/{sku}`
+- `GET /api/shopify/orders/by-reference/{reference}`
 
 ## Comandos de terminal para cada request
 

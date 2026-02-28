@@ -39,13 +39,52 @@ services:
       ODOO_USERNAME: usuario_api
       ODOO_PASSWORD: "9753b595cc85dea7505e305fad021b2a06b96e2e"
       JSON_OUTPUT_DIR: /app/generated_json
+      JSON_SHOPIFY_OUTPUT_DIR: /app/json_shopify
+      SHOPIFY_STORE_URL: https://tu-tienda.myshopify.com
+      SHOPIFY_ACCESS_TOKEN: "CEHARES1GC5SVMP8JMLVMEF7ZMUA735A"
+      SHOPIFY_API_VERSION: "2024-10"
     ports:
       - "8091:8000"
     volumes:
       - ./generated_json:/app/generated_json
+      - ./json_shopify:/app/json_shopify
+    restart: always
+
+  prestashop-db:
+    image: mariadb:11
+    container_name: prestashop-db-pruebas
+    environment:
+      MARIADB_DATABASE: prestashop
+      MARIADB_USER: prestashop
+      MARIADB_PASSWORD: prestashop
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - prestashop-db-data:/var/lib/mysql
+    restart: always
+
+  prestashop:
+    image: prestashop/prestashop:8
+    container_name: prestashop-app-pruebas
+    depends_on:
+      - prestashop-db
+    environment:
+      DB_SERVER: prestashop-db
+      DB_NAME: prestashop
+      DB_USER: prestashop
+      DB_PASSWD: prestashop
+      PS_DOMAIN: localhost:8081
+      PS_INSTALL_AUTO: 1
+      PS_FOLDER_ADMIN: admin-dev
+      PS_FOLDER_INSTALL: install-dev
+    ports:
+      - "8081:80"
+    volumes:
+      - prestashop-data:/var/www/html
     restart: always
 
 volumes:
   odoo-db-data:
   odoo-web-data:
+  prestashop-db-data:
+  prestashop-data:
  

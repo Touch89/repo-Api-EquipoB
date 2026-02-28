@@ -7,3 +7,6 @@ llaveapi: 9753b595cc85dea7505e305fad021b2a06b96e2e
 
 Correr contenedor y levantar api al mismo tiempo:
 docker-compose up -d --build api
+
+api key shopify: CEHARES1GC5SVMP8JMLVMEF7ZMUA735A
+desc:api 

@@ -16,6 +16,11 @@ class JsonRequestLogger:
         "/api/products": "productos",
         "/api/products/stock": "stock_productos",
         "/api/products/categories": "categorias_productos",
+        "/api/shopify/products": "shopify_productos",
+        "/api/shopify/orders": "shopify_ordenes",
+        "/api/shopify/customers": "shopify_clientes",
+        "/api/shopify/suppliers": "shopify_proveedores",
+        "/api/shopify/payments": "shopify_pagos",
         "/health": "health",
     }
 
@@ -61,6 +66,12 @@ class JsonRequestLogger:
     def _endpoint_name(self, path: str) -> str:
         if path in self.ENDPOINT_NAMES:
             return self.ENDPOINT_NAMES[path]
+
+        if path.startswith("/api/shopify/products/by-sku/"):
+            return "shopify_producto_por_sku"
+
+        if path.startswith("/api/shopify/orders/by-reference/"):
+            return "shopify_orden_por_referencia"
 
         clean_path = path.strip("/")
         if not clean_path:

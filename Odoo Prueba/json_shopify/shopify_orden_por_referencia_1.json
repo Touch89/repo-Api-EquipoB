@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-02-28T02:29:07.020604+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/shopify/orders/by-reference/1001",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 502,
+    "body": {
+      "detail": "Error Shopify 404 en /orders.json: {\"errors\":\"Not Found\"}"
+    }
+  }
+}
