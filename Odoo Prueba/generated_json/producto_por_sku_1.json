@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-28T07:03:38.236155+00:00",
+  "timestamp": "2026-02-28T06:59:24.436958+00:00",
   "request": {
     "method": "GET",
-    "path": "/health",
+    "path": "/api/products/by-sku/SKU-DEMO-001",
     "query": {},
     "body": null
   },
@@ -10,7 +10,7 @@
     "status_code": 200,
     "body": {
       "ok": true,
-      "message": "API activa"
+      "data": []
     }
   }
 }

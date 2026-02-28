@@ -43,6 +43,51 @@ class OdooService:
             {"fields": fields, "limit": 200},
         )
 
+    def get_customers(self):
+        fields = ["id", "name", "email", "phone", "mobile", "customer_rank"]
+        return self.client.execute_kw(
+            "res.partner",
+            "search_read",
+            [[["customer_rank", ">", 0]]],
+            {"fields": fields, "limit": 200},
+        )
+
+    def get_suppliers(self):
+        fields = ["id", "name", "email", "phone", "mobile", "supplier_rank"]
+        return self.client.execute_kw(
+            "res.partner",
+            "search_read",
+            [[["supplier_rank", ">", 0]]],
+            {"fields": fields, "limit": 200},
+        )
+
+    def get_payments(self):
+        fields = ["id", "name", "partner_id", "amount", "payment_type", "date", "state", "ref"]
+        return self.client.execute_kw(
+            "account.payment",
+            "search_read",
+            [[]],
+            {"fields": fields, "limit": 200},
+        )
+
+    def get_product_by_sku(self, sku: str):
+        fields = ["id", "display_name", "default_code", "list_price", "qty_available", "virtual_available"]
+        return self.client.execute_kw(
+            "product.product",
+            "search_read",
+            [[["default_code", "=", sku]]],
+            {"fields": fields, "limit": 200},
+        )
+
+    def get_order_by_reference(self, reference: str):
+        fields = ["id", "name", "partner_id", "date_order", "amount_total", "state"]
+        return self.client.execute_kw(
+            "sale.order",
+            "search_read",
+            [[["name", "ilike", reference]]],
+            {"fields": fields, "limit": 200},
+        )
+
     def create_product(self, product: ProductCreate):
         payload = {
             "name": product.name,
@@ -59,6 +104,9 @@ class OdooService:
         new_id = self.client.execute_kw("product.template", "create", [payload])
         return {"id": new_id, "name": product.name}
 
+    def delete_product(self, product_template_id: int):
+        return self.client.execute_kw("product.template", "unlink", [[product_template_id]])
+
     def bulk_create_products(self, products: list[ProductCreate]):
         created = []
         for product in products:
@@ -74,6 +122,30 @@ class ShopifyService:
     def get_products(self, limit: int = 50):
         data = self.client.get("/products.json", {"limit": limit})
         return data.get("products", [])
+
+    def create_product(self, product: ProductCreate):
+        variant = {
+            "price": str(product.list_price),
+        }
+        if product.default_code:
+            variant["sku"] = product.default_code
+
+        payload = {
+            "product": {
+                "title": product.name,
+                "product_type": product.type,
+                "variants": [variant],
+            }
+        }
+
+        data = self.client.post("/products.json", payload)
+        created = data.get("product", {})
+        first_variant = (created.get("variants") or [{}])[0]
+        return {
+            "id": created.get("id"),
+            "title": created.get("title"),
+            "sku": first_variant.get("sku"),
+        }
 
     def get_orders(self, limit: int = 50):
         data = self.client.get("/orders.json", {"status": "any", "limit": limit})

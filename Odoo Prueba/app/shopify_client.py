@@ -19,7 +19,7 @@ class ShopifyClient:
         if not self.access_token:
             raise HTTPException(status_code=500, detail="Falta configurar SHOPIFY_ACCESS_TOKEN")
 
-    def get(self, endpoint: str, query: dict | None = None):
+    def _request(self, method: str, endpoint: str, query: dict | None = None, payload: dict | None = None):
         self._validate_config()
 
         path = endpoint if endpoint.startswith("/") else f"/{endpoint}"
@@ -33,7 +33,11 @@ class ShopifyClient:
             "Content-Type": "application/json",
         }
 
-        req = request.Request(url=url, method="GET", headers=headers)
+        body = None
+        if payload is not None:
+            body = json.dumps(payload).encode("utf-8")
+
+        req = request.Request(url=url, method=method, headers=headers, data=body)
 
         try:
             with request.urlopen(req, timeout=30) as response:
@@ -47,3 +51,9 @@ class ShopifyClient:
             raise HTTPException(status_code=502, detail=f"No se pudo conectar a Shopify: {exc.reason}") from exc
         except Exception as exc:
             raise HTTPException(status_code=502, detail=f"Error inesperado Shopify: {exc}") from exc
+
+    def get(self, endpoint: str, query: dict | None = None):
+        return self._request("GET", endpoint, query=query)
+
+    def post(self, endpoint: str, payload: dict):
+        return self._request("POST", endpoint, payload=payload)

@@ -16,6 +16,9 @@ class JsonRequestLogger:
         "/api/products": "productos",
         "/api/products/stock": "stock_productos",
         "/api/products/categories": "categorias_productos",
+        "/api/customers": "clientes",
+        "/api/suppliers": "proveedores",
+        "/api/payments": "pagos",
         "/api/shopify/products": "shopify_productos",
         "/api/shopify/orders": "shopify_ordenes",
         "/api/shopify/customers": "shopify_clientes",
@@ -30,7 +33,10 @@ class JsonRequestLogger:
         self._lock = threading.Lock()
 
     async def log(self, request: Request, response: Response) -> Response:
-        request_body = await request.body()
+        try:
+            request_body = await request.body()
+        except RuntimeError:
+            request_body = b""
         response_body = b""
         async for chunk in response.body_iterator:
             response_body += chunk
@@ -66,6 +72,12 @@ class JsonRequestLogger:
     def _endpoint_name(self, path: str) -> str:
         if path in self.ENDPOINT_NAMES:
             return self.ENDPOINT_NAMES[path]
+
+        if path.startswith("/api/products/by-sku/"):
+            return "producto_por_sku"
+
+        if path.startswith("/api/orders/by-reference/"):
+            return "orden_por_referencia"
 
         if path.startswith("/api/shopify/products/by-sku/"):
             return "shopify_producto_por_sku"

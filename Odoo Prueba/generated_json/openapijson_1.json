@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-28T02:09:41.861842+00:00",
+  "timestamp": "2026-02-28T06:58:51.508457+00:00",
   "request": {
     "method": "GET",
     "path": "/openapi.json",
@@ -131,6 +131,153 @@
                   "application/json": {
                     "schema": {
                       "$ref": "#/components/schemas/ApiResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/customers": {
+          "get": {
+            "tags": [
+              "odoo"
+            ],
+            "summary": "Get Customers",
+            "operationId": "get_customers_api_customers_get",
+            "responses": {
+              "200": {
+                "description": "Successful Response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/suppliers": {
+          "get": {
+            "tags": [
+              "odoo"
+            ],
+            "summary": "Get Suppliers",
+            "operationId": "get_suppliers_api_suppliers_get",
+            "responses": {
+              "200": {
+                "description": "Successful Response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/payments": {
+          "get": {
+            "tags": [
+              "odoo"
+            ],
+            "summary": "Get Payments",
+            "operationId": "get_payments_api_payments_get",
+            "responses": {
+              "200": {
+                "description": "Successful Response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/products/by-sku/{sku}": {
+          "get": {
+            "tags": [
+              "odoo"
+            ],
+            "summary": "Get Product By Sku",
+            "operationId": "get_product_by_sku_api_products_by_sku__sku__get",
+            "parameters": [
+              {
+                "name": "sku",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "title": "Sku"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful Response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiResponse"
+                    }
+                  }
+                }
+              },
+              "422": {
+                "description": "Validation Error",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/HTTPValidationError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/orders/by-reference/{reference}": {
+          "get": {
+            "tags": [
+              "odoo"
+            ],
+            "summary": "Get Order By Reference",
+            "operationId": "get_order_by_reference_api_orders_by_reference__reference__get",
+            "parameters": [
+              {
+                "name": "reference",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "title": "Reference"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful Response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiResponse"
+                    }
+                  }
+                }
+              },
+              "422": {
+                "description": "Validation Error",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/HTTPValidationError"
                     }
                   }
                 }

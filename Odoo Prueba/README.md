@@ -84,6 +84,11 @@ Si ejecutas con Docker Compose, la carpeta `generated_json/` del proyecto queda 
 - `GET /api/products`
 - `GET /api/products/stock`
 - `GET /api/products/categories`
+- `GET /api/customers`
+- `GET /api/suppliers`
+- `GET /api/payments`
+- `GET /api/products/by-sku/{sku}`
+- `GET /api/orders/by-reference/{reference}`
 - `POST /api/products`
 - `POST /api/products/bulk`
 - `GET /api/shopify/products`
@@ -93,6 +98,8 @@ Si ejecutas con Docker Compose, la carpeta `generated_json/` del proyecto queda 
 - `GET /api/shopify/payments`
 - `GET /api/shopify/products/by-sku/{sku}`
 - `GET /api/shopify/orders/by-reference/{reference}`
+
+> Nota: `POST /api/products` y `POST /api/products/bulk` ahora crean el producto en **Odoo y Shopify**. Si falla Shopify, la API revierte la creación hecha en Odoo dentro de esa misma petición para evitar desincronización.
 
 ## Comandos de terminal para cada request
 
@@ -111,6 +118,11 @@ Invoke-RestMethod -Method Get -Uri "$base/api/orders"
 Invoke-RestMethod -Method Get -Uri "$base/api/products"
 Invoke-RestMethod -Method Get -Uri "$base/api/products/stock"
 Invoke-RestMethod -Method Get -Uri "$base/api/products/categories"
+Invoke-RestMethod -Method Get -Uri "$base/api/customers"
+Invoke-RestMethod -Method Get -Uri "$base/api/suppliers"
+Invoke-RestMethod -Method Get -Uri "$base/api/payments"
+Invoke-RestMethod -Method Get -Uri "$base/api/products/by-sku/SKU-DEMO-001"
+Invoke-RestMethod -Method Get -Uri "$base/api/orders/by-reference/S00001"
 ```
 
 ### POST /api/products
