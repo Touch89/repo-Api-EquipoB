@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-02-28T08:19:56.935956+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/prestashop/clientes",
+    "query": {
+      "limit": "1"
+    },
+    "body": null
+  },
+  "response": {
+    "status_code": 404,
+    "body": {
+      "detail": "Not Found"
+    }
+  }
+}

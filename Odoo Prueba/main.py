@@ -7,14 +7,14 @@ from app.json_logger import JsonRequestLogger
 app = FastAPI(title="Odoo API", version="1.0.0")
 app.include_router(router)
 json_logger = JsonRequestLogger()
-shopify_json_logger = JsonRequestLogger(output_dir=settings.json_shopify_output_dir)
+prestashop_json_logger = JsonRequestLogger(output_dir=settings.json_prestashop_output_dir)
 
 
 @app.middleware("http")
 async def generate_json_per_request(request, call_next):
 	response = await call_next(request)
-	if request.url.path.startswith("/api/shopify"):
-		return await shopify_json_logger.log(request, response)
+	if request.url.path.startswith("/api/prestashop"):
+		return await prestashop_json_logger.log(request, response)
 	return await json_logger.log(request, response)
 
 

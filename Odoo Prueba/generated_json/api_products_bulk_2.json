@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-02-28T08:05:13.895058+00:00",
+  "request": {
+    "method": "POST",
+    "path": "/api/products/bulk",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": {
+        "count": 2,
+        "items": [
+          {
+            "odoo": {
+              "id": 40,
+              "name": "Producto Bulk A 20260228020510"
+            },
+            "shopify": {
+              "id": "30",
+              "title": "Producto Bulk A 20260228020510",
+              "sku": "API-BULK-A-20260228020510"
+            }
+          },
+          {
+            "odoo": {
+              "id": 41,
+              "name": "Producto Bulk B 20260228020510"
+            },
+            "shopify": {
+              "id": "31",
+              "title": "Producto Bulk B 20260228020510",
+              "sku": "API-BULK-B-20260228020510"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

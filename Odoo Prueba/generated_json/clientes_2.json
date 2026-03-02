@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-02-28T08:04:37.193772+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/customers",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 14,
+          "name": "Azure Interior",
+          "email": "azure.Interior24@example.com",
+          "phone": "(870)-931-0505",
+          "mobile": false,
+          "customer_rank": 6
+        },
+        {
+          "id": 10,
+          "name": "Deco Addict",
+          "email": "deco_addict@yourcompany.example.com",
+          "phone": "(603)-996-3829",
+          "mobile": false,
+          "customer_rank": 16
+        }
+      ]
+    }
+  }
+}

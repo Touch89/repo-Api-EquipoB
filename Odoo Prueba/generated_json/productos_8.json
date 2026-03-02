@@ -1,0 +1,413 @@
+{
+  "timestamp": "2026-02-28T08:04:54.341812+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/products",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 23,
+          "name": "Acoustic Bloc Screens",
+          "default_code": "FURN_6666",
+          "list_price": 295.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 15,
+          "name": "Cabinet with Doors",
+          "default_code": "E-COM11",
+          "list_price": 140.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 30,
+          "name": "Cable Management Box",
+          "default_code": "FURN_5555",
+          "list_price": 100.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 29,
+          "name": "Chair floor protection",
+          "default_code": false,
+          "list_price": 12.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 16,
+          "name": "Conference Chair",
+          "default_code": false,
+          "list_price": 33.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 18,
+          "name": "Corner Desk Left Sit",
+          "default_code": "FURN_1118",
+          "list_price": 85.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 10,
+          "name": "Corner Desk Right Sit",
+          "default_code": "E-COM06",
+          "list_price": 147.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 9,
+          "name": "Customizable Desk",
+          "default_code": false,
+          "list_price": 750.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 28,
+          "name": "Deposit",
+          "default_code": false,
+          "list_price": 150.0,
+          "categ_id": [
+            5,
+            "All / Saleable / Services"
+          ],
+          "type": "service"
+        },
+        {
+          "id": 8,
+          "name": "Desk Combination",
+          "default_code": "FURN_7800",
+          "list_price": 450.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 21,
+          "name": "Desk Stand with Screen",
+          "default_code": "FURN_7888",
+          "list_price": 2100.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 24,
+          "name": "Drawer",
+          "default_code": "FURN_8855",
+          "list_price": 110.5,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 19,
+          "name": "Drawer Black",
+          "default_code": "FURN_8900",
+          "list_price": 25.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 20,
+          "name": "Flipover",
+          "default_code": "FURN_9001",
+          "list_price": 1950.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 25,
+          "name": "Four Person Desk",
+          "default_code": "FURN_8220",
+          "list_price": 2350.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 2,
+          "name": "Hotel Accommodation",
+          "default_code": false,
+          "list_price": 400.0,
+          "categ_id": [
+            3,
+            "All / Expenses"
+          ],
+          "type": "service"
+        },
+        {
+          "id": 22,
+          "name": "Individual Workplace",
+          "default_code": "FURN_0789",
+          "list_price": 885.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 11,
+          "name": "Large Cabinet",
+          "default_code": "E-COM07",
+          "list_price": 320.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 13,
+          "name": "Large Desk",
+          "default_code": "E-COM09",
+          "list_price": 1799.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 26,
+          "name": "Large Meeting Table",
+          "default_code": "FURN_6741",
+          "list_price": 4000.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 5,
+          "name": "Office Chair",
+          "default_code": "FURN_7777",
+          "list_price": 70.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 17,
+          "name": "Office Chair Black",
+          "default_code": "FURN_0269",
+          "list_price": 120.5,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 7,
+          "name": "Office Design Software",
+          "default_code": "FURN_9999",
+          "list_price": 280.0,
+          "categ_id": [
+            7,
+            "All / Saleable / Software"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 6,
+          "name": "Office Lamp",
+          "default_code": "FURN_8888",
+          "list_price": 40.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 14,
+          "name": "Pedal Bin",
+          "default_code": "E-COM10",
+          "list_price": 47.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 32,
+          "name": "Producto API Bulk 1",
+          "default_code": "API-BULK-01",
+          "list_price": 50.0,
+          "categ_id": [
+            1,
+            "All"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 33,
+          "name": "Producto API Bulk 2",
+          "default_code": "API-BULK-02",
+          "list_price": 60.0,
+          "categ_id": [
+            1,
+            "All"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 31,
+          "name": "Producto API OK",
+          "default_code": "API-OK-001",
+          "list_price": 120.0,
+          "categ_id": [
+            1,
+            "All"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 37,
+          "name": "Producto Bulk A 20260228020441",
+          "default_code": "API-BULK-A-20260228020441",
+          "list_price": 77.0,
+          "categ_id": [
+            1,
+            "All"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 38,
+          "name": "Producto Bulk B 20260228020441",
+          "default_code": "API-BULK-B-20260228020441",
+          "list_price": 88.0,
+          "categ_id": [
+            1,
+            "All"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 36,
+          "name": "Producto Verify 20260228020441",
+          "default_code": "API-VERIFY-20260228020441",
+          "list_price": 99.5,
+          "categ_id": [
+            1,
+            "All"
+          ],
+          "type": "consu"
+        },
+        {
+          "id": 1,
+          "name": "Restaurant Expenses",
+          "default_code": false,
+          "list_price": 14.0,
+          "categ_id": [
+            3,
+            "All / Expenses"
+          ],
+          "type": "service"
+        },
+        {
+          "id": 12,
+          "name": "Storage Box",
+          "default_code": "E-COM08",
+          "list_price": 15.8,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 27,
+          "name": "Three-Seat Sofa",
+          "default_code": "FURN_8999",
+          "list_price": 1500.0,
+          "categ_id": [
+            8,
+            "All / Saleable / Office Furniture"
+          ],
+          "type": "product"
+        },
+        {
+          "id": 4,
+          "name": "Virtual Home Staging",
+          "default_code": false,
+          "list_price": 38.25,
+          "categ_id": [
+            5,
+            "All / Saleable / Services"
+          ],
+          "type": "service"
+        },
+        {
+          "id": 3,
+          "name": "Virtual Interior Design",
+          "default_code": false,
+          "list_price": 30.75,
+          "categ_id": [
+            5,
+            "All / Saleable / Services"
+          ],
+          "type": "service"
+        }
+      ]
+    }
+  }
+}

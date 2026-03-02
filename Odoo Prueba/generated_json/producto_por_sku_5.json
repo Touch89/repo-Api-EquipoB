@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-28T08:04:45.341934+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/products/by-sku/API-VERIFY-20260228020441",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 46,
+          "display_name": "[API-VERIFY-20260228020441] Producto Verify 20260228020441",
+          "default_code": "API-VERIFY-20260228020441",
+          "list_price": 99.5,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        }
+      ]
+    }
+  }
+}

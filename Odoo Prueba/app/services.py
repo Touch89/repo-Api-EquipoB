@@ -1,5 +1,5 @@
 from app.odoo_client import OdooClient
-from app.shopify_client import ShopifyClient
+from app.prestashop_client import PrestashopClient
 from app.schemas import ProductCreate
 
 
@@ -33,6 +33,25 @@ class OdooService:
             [[]],
             {"fields": fields, "limit": 200},
         )
+
+    def get_products_for_prestashop_sync(self, limit: int = 200):
+        fields = ["id", "display_name", "default_code", "list_price", "qty_available", "virtual_available", "active", "type"]
+        return self.client.execute_kw(
+            "product.product",
+            "search_read",
+            [[]],
+            {"fields": fields, "limit": limit},
+        )
+
+    def get_product_for_prestashop_sync_by_reference(self, reference: str):
+        fields = ["id", "display_name", "default_code", "list_price", "qty_available", "virtual_available", "active", "type"]
+        products = self.client.execute_kw(
+            "product.product",
+            "search_read",
+            [[["default_code", "=", reference]]],
+            {"fields": fields, "limit": 1},
+        )
+        return products[0] if products else None
 
     def get_product_categories(self):
         fields = ["id", "name", "parent_id"]
@@ -115,13 +134,61 @@ class OdooService:
         return {"count": len(created), "items": created}
 
 
-class ShopifyService:
+class PrestashopService:
     def __init__(self) -> None:
-        self.client = ShopifyClient()
+        self.client = PrestashopClient()
+
+    @staticmethod
+    def _as_resource_list(data, plural_key: str, singular_key: str):
+        if isinstance(data, list):
+            return data
+        if isinstance(data, dict):
+            if isinstance(data.get(plural_key), list):
+                return data.get(plural_key, [])
+            if isinstance(data.get(singular_key), list):
+                return data.get(singular_key, [])
+            if isinstance(data.get(singular_key), dict):
+                return [data.get(singular_key)]
+        return []
 
     def get_products(self, limit: int = 50):
-        data = self.client.get("/products.json", {"limit": limit})
-        return data.get("products", [])
+        data = self.client.get_resource("products", {"display": "full", "limit": f"[0,{max(limit - 1, 0)}]"})
+        return self._as_resource_list(data, "products", "product")
+
+    def get_existing_skus(self, limit: int = 250):
+        data = self.client.get_resource("products", {"display": "full", "limit": f"[0,{max(limit - 1, 0)}]"})
+        products = self._as_resource_list(data, "products", "product")
+        skus = set()
+        for product in products:
+            sku = (product.get("reference") or "").strip().lower()
+            if sku:
+                skus.add(sku)
+        return skus
+
+    def find_product_by_reference(self, reference: str, limit: int = 250):
+        data = self.client.get_resource(
+            "products",
+            {
+                "display": "full",
+                "filter[reference]": f"[{reference}]",
+                "limit": f"[0,{max(limit - 1, 0)}]",
+            },
+        )
+        products = self._as_resource_list(data, "products", "product")
+
+        for product in products:
+            sku = (product.get("reference") or "").strip()
+            if sku.lower() == reference.strip().lower():
+                return {
+                    "product_id": product.get("id"),
+                    "title": product.get("name") or product.get("id"),
+                    "status": "active" if str(product.get("active", "1")) == "1" else "draft",
+                    "variant_id": None,
+                    "sku": sku,
+                    "price": product.get("price"),
+                }
+
+        return None
 
     def create_product(self, product: ProductCreate):
         variant = {
@@ -147,83 +214,135 @@ class ShopifyService:
             "sku": first_variant.get("sku"),
         }
 
+    def create_product_from_odoo(self, odoo_product: dict):
+        reference = (odoo_product.get("default_code") or "").strip()
+        title = odoo_product.get("display_name") or odoo_product.get("name") or reference
+        price = float(odoo_product.get("list_price") or 0.0)
+
+        variant = {
+            "price": str(price),
+        }
+        if reference:
+            variant["sku"] = reference
+
+        payload = {
+            "product": {
+                "title": title,
+                "variants": [variant],
+                "status": "active" if odoo_product.get("active", True) else "draft",
+            }
+        }
+
+        data = self.client.post("/products.json", payload)
+        created = data.get("product", {})
+        first_variant = (created.get("variants") or [{}])[0]
+        return {
+            "id": created.get("id"),
+            "title": created.get("title"),
+            "sku": first_variant.get("sku"),
+        }
+
+    def update_product_from_odoo_by_reference(self, reference: str, odoo_product: dict):
+        found = self.find_product_by_reference(reference=reference)
+        if not found:
+            return None
+
+        title = odoo_product.get("display_name") or odoo_product.get("name") or reference
+        price = float(odoo_product.get("list_price") or 0.0)
+        active = bool(odoo_product.get("active", True))
+
+        payload = {
+            "product": {
+                "id": found["product_id"],
+                "title": title,
+                "status": "active" if active else "draft",
+                "variants": [
+                    {
+                        "id": found["variant_id"],
+                        "price": str(price),
+                        "sku": reference,
+                    }
+                ],
+            }
+        }
+
+        data = self.client.put(f"/products/{found['product_id']}.json", payload)
+        updated = data.get("product", {})
+        first_variant = (updated.get("variants") or [{}])[0]
+        return {
+            "id": updated.get("id"),
+            "title": updated.get("title"),
+            "status": updated.get("status"),
+            "sku": first_variant.get("sku"),
+            "price": first_variant.get("price"),
+        }
+
+    def deactivate_product_by_reference(self, reference: str):
+        found = self.find_product_by_reference(reference=reference)
+        if not found:
+            return None
+
+        payload = {
+            "product": {
+                "id": found["product_id"],
+                "title": found.get("title") or reference,
+                "status": "draft",
+                "variants": [
+                    {
+                        "sku": found.get("sku") or reference,
+                        "price": str(found.get("price") or 0.0),
+                    }
+                ],
+            }
+        }
+
+        data = self.client.put(f"/products/{found['product_id']}.json", payload)
+        updated = data.get("product", {})
+        return {
+            "id": updated.get("id"),
+            "title": updated.get("title"),
+            "status": updated.get("status"),
+            "reference": reference,
+        }
+
     def get_orders(self, limit: int = 50):
-        data = self.client.get("/orders.json", {"status": "any", "limit": limit})
-        return data.get("orders", [])
+        data = self.client.get_resource("orders", {"display": "full", "limit": f"[0,{max(limit - 1, 0)}]"})
+        return self._as_resource_list(data, "orders", "order")
 
     def get_customers(self, limit: int = 50):
-        data = self.client.get("/customers.json", {"limit": limit})
-        return data.get("customers", [])
+        data = self.client.get_resource("customers", {"display": "full", "limit": f"[0,{max(limit - 1, 0)}]"})
+        return self._as_resource_list(data, "customers", "customer")
 
     def get_suppliers(self, limit: int = 250):
-        data = self.client.get("/products.json", {"limit": limit, "fields": "vendor"})
-        products = data.get("products", [])
-        vendors = sorted({(item.get("vendor") or "").strip() for item in products if (item.get("vendor") or "").strip()})
-        return [{"name": vendor} for vendor in vendors]
+        data = self.client.get_resource("suppliers", {"display": "full", "limit": f"[0,{max(limit - 1, 0)}]"})
+        return self._as_resource_list(data, "suppliers", "supplier")
 
     def get_payments(self, order_limit: int = 20):
-        orders = self.get_orders(limit=order_limit)
-        payments = []
-        for order in orders:
-            order_id = order.get("id")
-            if not order_id:
-                continue
-
-            tx_data = self.client.get(f"/orders/{order_id}/transactions.json")
-            transactions = tx_data.get("transactions", [])
-            for tx in transactions:
-                payments.append(
-                    {
-                        "order_id": order_id,
-                        "order_name": order.get("name"),
-                        "transaction_id": tx.get("id"),
-                        "kind": tx.get("kind"),
-                        "status": tx.get("status"),
-                        "amount": tx.get("amount"),
-                        "currency": tx.get("currency"),
-                        "gateway": tx.get("gateway"),
-                        "created_at": tx.get("created_at"),
-                    }
-                )
-
-        return payments
+        data = self.client.get_resource("order_payments", {"display": "full", "limit": f"[0,{max(order_limit - 1, 0)}]"})
+        if isinstance(data, list):
+            return data
+        if isinstance(data, dict):
+            if isinstance(data.get("order_payments"), list):
+                return data.get("order_payments", [])
+            if isinstance(data.get("order_payment"), list):
+                return data.get("order_payment", [])
+            if isinstance(data.get("order_payment"), dict):
+                return [data.get("order_payment")]
+        return []
 
     def get_product_by_sku(self, sku: str):
-        data = self.client.get("/products.json", {"limit": 250, "fields": "id,title,variants,vendor,product_type,status,created_at,updated_at"})
-        products = data.get("products", [])
-        normalized_sku = sku.strip().lower()
-
-        result = []
-        for product in products:
-            for variant in product.get("variants", []):
-                variant_sku = (variant.get("sku") or "").strip().lower()
-                if variant_sku == normalized_sku:
-                    result.append(
-                        {
-                            "product_id": product.get("id"),
-                            "title": product.get("title"),
-                            "vendor": product.get("vendor"),
-                            "product_type": product.get("product_type"),
-                            "status": product.get("status"),
-                            "variant_id": variant.get("id"),
-                            "sku": variant.get("sku"),
-                            "price": variant.get("price"),
-                            "inventory_quantity": variant.get("inventory_quantity"),
-                        }
-                    )
-
-        return result
+        found = self.find_product_by_reference(reference=sku)
+        return [found] if found else []
 
     def get_order_by_reference(self, reference: str):
-        data = self.client.get("/orders.json", {"status": "any", "limit": 250})
-        orders = data.get("orders", [])
-        normalized_ref = reference.strip().lower()
-
-        matched = []
-        for order in orders:
-            name = (order.get("name") or "").strip().lower()
-            order_number = str(order.get("order_number") or "").strip().lower()
-            if normalized_ref in {name, order_number}:
-                matched.append(order)
-
-        return matched
+        data = self.client.get_resource("orders", {"display": "full", "filter[reference]": f"[{reference}]", "limit": "[0,50]"})
+        if isinstance(data, list):
+            return data
+        if isinstance(data, dict):
+            if isinstance(data.get("orders"), list):
+                return data.get("orders", [])
+            if isinstance(data.get("order"), list):
+                return data.get("order", [])
+            if isinstance(data.get("order"), dict):
+                return [data.get("order")]
+        return []

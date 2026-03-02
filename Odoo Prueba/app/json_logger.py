@@ -19,11 +19,12 @@ class JsonRequestLogger:
         "/api/customers": "clientes",
         "/api/suppliers": "proveedores",
         "/api/payments": "pagos",
-        "/api/shopify/products": "shopify_productos",
-        "/api/shopify/orders": "shopify_ordenes",
-        "/api/shopify/customers": "shopify_clientes",
-        "/api/shopify/suppliers": "shopify_proveedores",
-        "/api/shopify/payments": "shopify_pagos",
+        "/api/sync/products": "sync_productos",
+        "/api/prestashop/products": "prestashop_productos",
+        "/api/prestashop/orders": "prestashop_ordenes",
+        "/api/prestashop/customers": "prestashop_clientes",
+        "/api/prestashop/suppliers": "prestashop_proveedores",
+        "/api/prestashop/payments": "prestashop_pagos",
         "/health": "health",
     }
 
@@ -79,11 +80,20 @@ class JsonRequestLogger:
         if path.startswith("/api/orders/by-reference/"):
             return "orden_por_referencia"
 
-        if path.startswith("/api/shopify/products/by-sku/"):
-            return "shopify_producto_por_sku"
+        if path.startswith("/api/sync/products/by-reference/"):
+            return "sync_producto_por_referencia"
 
-        if path.startswith("/api/shopify/orders/by-reference/"):
-            return "shopify_orden_por_referencia"
+        if path.startswith("/api/sync/products/update/by-reference/"):
+            return "sync_actualizar_producto_por_referencia"
+
+        if path.startswith("/api/sync/products/deactivate/by-reference/"):
+            return "sync_desactivar_producto_por_referencia"
+
+        if path.startswith("/api/prestashop/products/by-sku/"):
+            return "prestashop_producto_por_sku"
+
+        if path.startswith("/api/prestashop/orders/by-reference/"):
+            return "prestashop_orden_por_referencia"
 
         clean_path = path.strip("/")
         if not clean_path:

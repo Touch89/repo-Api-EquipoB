@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-02-28T08:33:13.634521+00:00",
+  "request": {
+    "method": "POST",
+    "path": "/api/products/bulk",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": {
+        "count": 1,
+        "items": [
+          {
+            "odoo": {
+              "id": 47,
+              "name": "Producto Bulk Verificacion"
+            },
+            "prestashop": {
+              "id": "63",
+              "title": "Producto Bulk Verificacion",
+              "sku": "AUTO-PS-BULK-1772267592"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

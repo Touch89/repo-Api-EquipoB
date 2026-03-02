@@ -38,12 +38,13 @@ Base URL local:
 - `ODOO_PASSWORD` (default: `1234`)
 - `JSON_OUTPUT_DIR` (default: `generated_json`)
 
-## Variables de conexión a Shopify
+## Variables de conexión a PrestaShop
 
-- `SHOPIFY_STORE_URL` (ejemplo: `https://tu-tienda.myshopify.com`)
-- `SHOPIFY_ACCESS_TOKEN` (Admin API access token)
-- `SHOPIFY_API_VERSION` (default: `2024-10`)
-- `JSON_SHOPIFY_OUTPUT_DIR` (default: `json_shopify`)
+- `PRESTASHOP_URL` (ejemplo: `http://localhost:8081` o `http://prestashop` en Docker)
+- `PRESTASHOP_API_KEY` (Webservice key)
+- `PRESTASHOP_LANGUAGE_ID` (default: `1`)
+- `PRESTASHOP_HOST_HEADER` (default: `localhost:8081`)
+- `JSON_PRESTASHOP_OUTPUT_DIR` (default: `json_prestashop`)
 
 En PowerShell:
 
@@ -66,7 +67,7 @@ Cada consulta a endpoint genera automáticamente un archivo `.json` con:
 
 Por defecto se guardan en la carpeta `generated_json/`.
 
-Las consultas a endpoints de Shopify se guardan en `json_shopify/`.
+Las consultas a endpoints de PrestaShop se guardan en `json_prestashop/`.
 
 La nomenclatura es por endpoint y número incremental, por ejemplo:
 
@@ -89,17 +90,21 @@ Si ejecutas con Docker Compose, la carpeta `generated_json/` del proyecto queda 
 - `GET /api/payments`
 - `GET /api/products/by-sku/{sku}`
 - `GET /api/orders/by-reference/{reference}`
+- `GET /api/sync/products`
+- `GET /api/sync/products/by-reference/{reference}`
+- `GET /api/sync/products/update/by-reference/{reference}`
+- `GET /api/sync/products/deactivate/by-reference/{reference}`
 - `POST /api/products`
 - `POST /api/products/bulk`
-- `GET /api/shopify/products`
-- `GET /api/shopify/orders`
-- `GET /api/shopify/customers`
-- `GET /api/shopify/suppliers`
-- `GET /api/shopify/payments`
-- `GET /api/shopify/products/by-sku/{sku}`
-- `GET /api/shopify/orders/by-reference/{reference}`
+- `GET /api/prestashop/products`
+- `GET /api/prestashop/orders`
+- `GET /api/prestashop/customers`
+- `GET /api/prestashop/suppliers`
+- `GET /api/prestashop/payments`
+- `GET /api/prestashop/products/by-sku/{sku}`
+- `GET /api/prestashop/orders/by-reference/{reference}`
 
-> Nota: `POST /api/products` y `POST /api/products/bulk` ahora crean el producto en **Odoo y Shopify**. Si falla Shopify, la API revierte la creación hecha en Odoo dentro de esa misma petición para evitar desincronización.
+> Nota: `POST /api/products` y `POST /api/products/bulk` ahora crean el producto en **Odoo y PrestaShop**. Si falla PrestaShop, la API revierte la creación hecha en Odoo dentro de esa misma petición para evitar desincronización.
 
 ## Comandos de terminal para cada request
 
@@ -123,6 +128,17 @@ Invoke-RestMethod -Method Get -Uri "$base/api/suppliers"
 Invoke-RestMethod -Method Get -Uri "$base/api/payments"
 Invoke-RestMethod -Method Get -Uri "$base/api/products/by-sku/SKU-DEMO-001"
 Invoke-RestMethod -Method Get -Uri "$base/api/orders/by-reference/S00001"
+Invoke-RestMethod -Method Get -Uri "$base/api/sync/products?limit=200"
+Invoke-RestMethod -Method Get -Uri "$base/api/sync/products/by-reference/FURN_7777"
+Invoke-RestMethod -Method Get -Uri "$base/api/sync/products/update/by-reference/FURN_7777"
+Invoke-RestMethod -Method Get -Uri "$base/api/sync/products/deactivate/by-reference/FURN_7777"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/products"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/orders"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/customers"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/suppliers"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/payments"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/products/by-sku/FURN_7777"
+Invoke-RestMethod -Method Get -Uri "$base/api/prestashop/orders/by-reference/REF-TEST"
 ```
 
 ### POST /api/products

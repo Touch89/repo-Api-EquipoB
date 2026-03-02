@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-02-28T08:04:37.920244+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/payments",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": []
+    }
+  }
+}

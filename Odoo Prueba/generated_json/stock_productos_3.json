@@ -1,0 +1,283 @@
+{
+  "timestamp": "2026-02-28T08:04:36.478524+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/products/stock",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 42,
+          "display_name": "[API-BULK-01] Producto API Bulk 1",
+          "default_code": "API-BULK-01",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 43,
+          "display_name": "[API-BULK-02] Producto API Bulk 2",
+          "default_code": "API-BULK-02",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 41,
+          "display_name": "[API-OK-001] Producto API OK",
+          "default_code": "API-OK-001",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 36,
+          "display_name": "[DESK0005] Customizable Desk (Custom, White)",
+          "default_code": "DESK0005",
+          "qty_available": 65.0,
+          "virtual_available": 65.0
+        },
+        {
+          "id": 37,
+          "display_name": "[DESK0006] Customizable Desk (Custom, Black)",
+          "default_code": "DESK0006",
+          "qty_available": 70.0,
+          "virtual_available": 70.0
+        },
+        {
+          "id": 16,
+          "display_name": "[E-COM06] Corner Desk Right Sit",
+          "default_code": "E-COM06",
+          "qty_available": 0.0,
+          "virtual_available": -10.0
+        },
+        {
+          "id": 17,
+          "display_name": "[E-COM07] Large Cabinet",
+          "default_code": "E-COM07",
+          "qty_available": 500.0,
+          "virtual_available": 270.0
+        },
+        {
+          "id": 18,
+          "display_name": "[E-COM08] Storage Box",
+          "default_code": "E-COM08",
+          "qty_available": 18.0,
+          "virtual_available": 18.0
+        },
+        {
+          "id": 19,
+          "display_name": "[E-COM09] Large Desk",
+          "default_code": "E-COM09",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 20,
+          "display_name": "[E-COM10] Pedal Bin",
+          "default_code": "E-COM10",
+          "qty_available": 22.0,
+          "virtual_available": 22.0
+        },
+        {
+          "id": 21,
+          "display_name": "[E-COM11] Cabinet with Doors",
+          "default_code": "E-COM11",
+          "qty_available": 33.0,
+          "virtual_available": 138.0
+        },
+        {
+          "id": 23,
+          "display_name": "[E-COM12] Conference Chair (Steel)",
+          "default_code": "E-COM12",
+          "qty_available": 26.0,
+          "virtual_available": 26.0
+        },
+        {
+          "id": 24,
+          "display_name": "[E-COM13] Conference Chair (Aluminium)",
+          "default_code": "E-COM13",
+          "qty_available": 30.0,
+          "virtual_available": 30.0
+        },
+        {
+          "id": 12,
+          "display_name": "[FURN_0096] Customizable Desk (Steel, White)",
+          "default_code": "FURN_0096",
+          "qty_available": 45.0,
+          "virtual_available": 45.0
+        },
+        {
+          "id": 13,
+          "display_name": "[FURN_0097] Customizable Desk (Steel, Black)",
+          "default_code": "FURN_0097",
+          "qty_available": 50.0,
+          "virtual_available": 50.0
+        },
+        {
+          "id": 14,
+          "display_name": "[FURN_0098] Customizable Desk (Aluminium, White)",
+          "default_code": "FURN_0098",
+          "qty_available": 55.0,
+          "virtual_available": 55.0
+        },
+        {
+          "id": 25,
+          "display_name": "[FURN_0269] Office Chair Black",
+          "default_code": "FURN_0269",
+          "qty_available": 10.0,
+          "virtual_available": 10.0
+        },
+        {
+          "id": 30,
+          "display_name": "[FURN_0789] Individual Workplace",
+          "default_code": "FURN_0789",
+          "qty_available": 16.0,
+          "virtual_available": 16.0
+        },
+        {
+          "id": 26,
+          "display_name": "[FURN_1118] Corner Desk Left Sit",
+          "default_code": "FURN_1118",
+          "qty_available": 2.0,
+          "virtual_available": 2.0
+        },
+        {
+          "id": 40,
+          "display_name": "[FURN_5555] Cable Management Box",
+          "default_code": "FURN_5555",
+          "qty_available": 90.0,
+          "virtual_available": 90.0
+        },
+        {
+          "id": 31,
+          "display_name": "[FURN_6666] Acoustic Bloc Screens",
+          "default_code": "FURN_6666",
+          "qty_available": 16.0,
+          "virtual_available": 16.0
+        },
+        {
+          "id": 34,
+          "display_name": "[FURN_6741] Large Meeting Table",
+          "default_code": "FURN_6741",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 5,
+          "display_name": "[FURN_7777] Office Chair",
+          "default_code": "FURN_7777",
+          "qty_available": 0.0,
+          "virtual_available": 35.0
+        },
+        {
+          "id": 8,
+          "display_name": "[FURN_7800] Desk Combination",
+          "default_code": "FURN_7800",
+          "qty_available": 60.0,
+          "virtual_available": 4.0
+        },
+        {
+          "id": 29,
+          "display_name": "[FURN_7888] Desk Stand with Screen",
+          "default_code": "FURN_7888",
+          "qty_available": 0.0,
+          "virtual_available": 125.0
+        },
+        {
+          "id": 33,
+          "display_name": "[FURN_8220] Four Person Desk",
+          "default_code": "FURN_8220",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 32,
+          "display_name": "[FURN_8855] Drawer",
+          "default_code": "FURN_8855",
+          "qty_available": 80.0,
+          "virtual_available": 65.0
+        },
+        {
+          "id": 6,
+          "display_name": "[FURN_8888] Office Lamp",
+          "default_code": "FURN_8888",
+          "qty_available": 0.0,
+          "virtual_available": 10.0
+        },
+        {
+          "id": 27,
+          "display_name": "[FURN_8900] Drawer Black",
+          "default_code": "FURN_8900",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 35,
+          "display_name": "[FURN_8999] Three-Seat Sofa",
+          "default_code": "FURN_8999",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 28,
+          "display_name": "[FURN_9001] Flipover",
+          "default_code": "FURN_9001",
+          "qty_available": 0.0,
+          "virtual_available": 12.0
+        },
+        {
+          "id": 7,
+          "display_name": "[FURN_9999] Office Design Software",
+          "default_code": "FURN_9999",
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 39,
+          "display_name": "Chair floor protection",
+          "default_code": false,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 38,
+          "display_name": "Deposit",
+          "default_code": false,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 2,
+          "display_name": "Hotel Accommodation",
+          "default_code": false,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 1,
+          "display_name": "Restaurant Expenses",
+          "default_code": false,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 4,
+          "display_name": "Virtual Home Staging",
+          "default_code": false,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        },
+        {
+          "id": 3,
+          "display_name": "Virtual Interior Design",
+          "default_code": false,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        }
+      ]
+    }
+  }
+}

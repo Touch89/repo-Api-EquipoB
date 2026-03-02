@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-02-28T08:04:56.938140+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/orders/by-reference/S00001",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 1,
+          "name": "S00001",
+          "partner_id": [
+            10,
+            "Deco Addict"
+          ],
+          "date_order": "2026-01-27 08:55:00",
+          "amount_total": 1740.0,
+          "state": "draft"
+        }
+      ]
+    }
+  }
+}

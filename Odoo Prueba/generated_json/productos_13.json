@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-02-28T08:33:12.765173+00:00",
+  "request": {
+    "method": "POST",
+    "path": "/api/products",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": {
+        "odoo": {
+          "id": 46,
+          "name": "Producto Verificacion Final"
+        },
+        "prestashop": {
+          "id": "62",
+          "title": "Producto Verificacion Final",
+          "sku": "AUTO-PS-FINAL-1772267592"
+        }
+      }
+    }
+  }
+}

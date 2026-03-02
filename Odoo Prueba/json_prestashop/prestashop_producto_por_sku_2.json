@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-28T07:03:38.236155+00:00",
+  "timestamp": "2026-02-28T08:33:10.420830+00:00",
   "request": {
     "method": "GET",
-    "path": "/health",
+    "path": "/api/prestashop/products/by-sku/SKU-1",
     "query": {},
     "body": null
   },
@@ -10,7 +10,7 @@
     "status_code": 200,
     "body": {
       "ok": true,
-      "message": "API activa"
+      "data": []
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-02-28T08:32:51.371179+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/prestashop/orders/by-reference/1001",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": []
+    }
+  }
+}

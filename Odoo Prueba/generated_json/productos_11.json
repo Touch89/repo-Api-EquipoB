@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-02-28T08:21:23.898164+00:00",
+  "request": {
+    "method": "POST",
+    "path": "/api/products",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": {
+        "odoo": {
+          "id": 43,
+          "name": "Producto Auto Prestashop"
+        },
+        "prestashop": {
+          "id": "59",
+          "title": "Producto Auto Prestashop",
+          "sku": "AUTO-PS-1772266883"
+        }
+      }
+    }
+  }
+}

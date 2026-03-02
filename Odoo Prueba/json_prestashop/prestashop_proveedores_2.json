@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-02-28T08:32:51.244751+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/prestashop/suppliers",
+    "query": {
+      "limit": "1"
+    },
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": []
+    }
+  }
+}

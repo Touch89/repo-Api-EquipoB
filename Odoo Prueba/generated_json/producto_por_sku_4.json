@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-28T08:04:38.276942+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/products/by-sku/FURN_7777",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 5,
+          "display_name": "[FURN_7777] Office Chair",
+          "default_code": "FURN_7777",
+          "list_price": 70.0,
+          "qty_available": 0.0,
+          "virtual_available": 35.0
+        }
+      ]
+    }
+  }
+}

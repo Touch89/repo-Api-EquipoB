@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-28T08:04:45.803971+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/products/by-sku/API-BULK-A-20260228020441",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 47,
+          "display_name": "[API-BULK-A-20260228020441] Producto Bulk A 20260228020441",
+          "default_code": "API-BULK-A-20260228020441",
+          "list_price": 77.0,
+          "qty_available": 0.0,
+          "virtual_available": 0.0
+        }
+      ]
+    }
+  }
+}

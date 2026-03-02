@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-28T08:04:55.824008+00:00",
+  "request": {
+    "method": "GET",
+    "path": "/api/suppliers",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": [
+        {
+          "id": 14,
+          "name": "Azure Interior",
+          "email": "azure.Interior24@example.com",
+          "phone": "(870)-931-0505",
+          "mobile": false,
+          "supplier_rank": 8
+        }
+      ]
+    }
+  }
+}

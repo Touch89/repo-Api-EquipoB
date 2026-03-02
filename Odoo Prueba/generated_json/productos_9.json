@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-02-28T08:05:12.024394+00:00",
+  "request": {
+    "method": "POST",
+    "path": "/api/products",
+    "query": {},
+    "body": null
+  },
+  "response": {
+    "status_code": 200,
+    "body": {
+      "ok": true,
+      "data": {
+        "odoo": {
+          "id": 39,
+          "name": "Producto Verify 20260228020510"
+        },
+        "shopify": {
+          "id": "29",
+          "title": "Producto Verify 20260228020510",
+          "sku": "API-VERIFY-20260228020510"
+        }
+      }
+    }
+  }
+}

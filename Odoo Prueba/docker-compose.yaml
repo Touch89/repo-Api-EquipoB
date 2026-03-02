@@ -39,15 +39,16 @@ services:
       ODOO_USERNAME: usuario_api
       ODOO_PASSWORD: "9753b595cc85dea7505e305fad021b2a06b96e2e"
       JSON_OUTPUT_DIR: /app/generated_json
-      JSON_SHOPIFY_OUTPUT_DIR: /app/json_shopify
-      SHOPIFY_STORE_URL: https://tu-tienda.myshopify.com
-      SHOPIFY_ACCESS_TOKEN: "CEHARES1GC5SVMP8JMLVMEF7ZMUA735A"
-      SHOPIFY_API_VERSION: "2024-10"
+      JSON_PRESTASHOP_OUTPUT_DIR: /app/json_prestashop
+      PRESTASHOP_URL: http://prestashop
+      PRESTASHOP_API_KEY: "CEHARES1GC5SVMP8JMLVMEF7ZMUA735A"
+      PRESTASHOP_LANGUAGE_ID: "1"
+      PRESTASHOP_HOST_HEADER: "localhost:8081"
     ports:
       - "8091:8000"
     volumes:
       - ./generated_json:/app/generated_json
-      - ./json_shopify:/app/json_shopify
+      - ./json_prestashop:/app/json_prestashop
     restart: always
 
   prestashop-db:

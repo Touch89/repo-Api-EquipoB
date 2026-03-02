@@ -14,7 +14,7 @@ class _NoRedirect(request.HTTPRedirectHandler):
         return None
 
 
-class ShopifyClient:
+class PrestashopClient:
     def __init__(self) -> None:
         self.store_url = settings.prestashop_url.strip().rstrip("/")
         self.access_token = settings.prestashop_api_key.strip()
@@ -172,10 +172,6 @@ class ShopifyClient:
             "sku": reference,
             "active": active,
         }
-
-    def get(self, endpoint: str, query: dict | None = None):
-        resource = endpoint.strip("/").replace(".json", "")
-        return self.get_resource(resource, query=query)
 
     def post(self, endpoint: str, payload: dict):
         resource = endpoint.strip("/").replace(".json", "")
